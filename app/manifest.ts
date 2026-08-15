@@ -1,0 +1,24 @@
+export const dynamic = 'force-static'
+
+import type { MetadataRoute } from 'next'
+
+export default function manifest(): MetadataRoute.Manifest {
+  return {
+    name: 'Ne Pişirsem? — Elindekilerle Yemek Öner',
+    short_name: 'Ne Pişirsem?',
+    description:
+      'Elindeki malzemeleri gir, yapay zeka sana öğününe uygun yemek tarifleri önersin.',
+    start_url: '/',
+    display: 'standalone',
+    orientation: 'portrait',
+    background_color: '#fdf6ec',
+    theme_color: '#e8833a',
+    icons: [
+      {
+        src: '/icon.svg',
+        sizes: 'any',
+        type: 'image/svg+xml',
+      },
+    ],
+  }
+}
