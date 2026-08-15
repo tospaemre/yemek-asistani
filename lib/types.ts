@@ -16,10 +16,19 @@ export interface Recipe {
   cookTime: number // dakika
   servings: number
   difficulty: 'Kolay' | 'Orta' | 'Zor'
+  /** Kullanıcının elinde olanlar. Ada göre aramada boş kalır. */
   usedIngredients: string[]
+  /** Kullanıcıda olmayanlar. Ada göre aramada boş kalır. */
   missingIngredients: string[]
+  /**
+   * Tarifin bütün malzemeleri. Ada göre arama sonuçlarında bunu düz liste
+   * olarak gösteriyoruz; orada "eksik malzeme" demek anlamsız olurdu.
+   * Eski kayıtlarda bulunmayabilir, o yüzden isteğe bağlı.
+   */
+  ingredients?: string[]
   steps: string[]
-  summary: string
+  /** Kısa tanıtım. Tarif verisinde her zaman bulunmadığı için isteğe bağlı. */
+  summary?: string
 }
 
 export interface RecipeSuggestion {

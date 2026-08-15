@@ -154,7 +154,7 @@ export function HomeScreen({ isFavorite, onToggleFavorite, onAddHistory }: HomeS
             </p>
           </div>
 
-          <IngredientInput ingredients={ingredients} onChange={setIngredients} />
+          <IngredientInput ingredients={ingredients} onChange={setIngredients} meal={meal} />
         </div>
       )}
 

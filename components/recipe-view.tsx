@@ -42,7 +42,9 @@ export function RecipeView({ recipe, isFavorite, onToggleFavorite }: RecipeViewP
             <h2 className="text-balance font-display text-2xl font-extrabold leading-tight">
               {recipe.title}
             </h2>
-            <p className="mt-1 text-sm text-muted-foreground">{recipe.summary}</p>
+            {recipe.summary && (
+              <p className="mt-1 text-sm text-muted-foreground">{recipe.summary}</p>
+            )}
           </div>
         </div>
         <button
@@ -74,6 +76,19 @@ export function RecipeView({ recipe, isFavorite, onToggleFavorite }: RecipeViewP
 
       <section className="rounded-3xl border border-border bg-card p-4">
         <h3 className="mb-3 font-display text-lg font-bold">Kullanacağın Malzemeler</h3>
+        {/* Ada göre aramada elde/eksik ayrımı yok; malzemeler düz liste gösterilir. */}
+        {recipe.usedIngredients.length === 0 &&
+          recipe.missingIngredients.length === 0 &&
+          recipe.ingredients && (
+            <ul className="flex flex-col gap-1.5">
+              {recipe.ingredients.map((ing) => (
+                <li key={ing} className="flex items-center gap-2 text-sm">
+                  <span className="h-1.5 w-1.5 shrink-0 rounded-full bg-primary" />
+                  {ing}
+                </li>
+              ))}
+            </ul>
+          )}
         {recipe.usedIngredients.length > 0 && (
           <>
             <p className="mb-2 text-xs font-semibold uppercase tracking-wide text-muted-foreground">

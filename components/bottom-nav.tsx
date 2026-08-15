@@ -1,12 +1,13 @@
 'use client'
 
-import { Home, Heart, Clock, Settings } from 'lucide-react'
+import { Home, Search, Heart, Clock, Settings } from 'lucide-react'
 import { cn } from '@/lib/utils'
 
-export type Tab = 'home' | 'favorites' | 'history' | 'settings'
+export type Tab = 'home' | 'search' | 'favorites' | 'history' | 'settings'
 
 const TABS: { id: Tab; label: string; icon: typeof Home }[] = [
   { id: 'home', label: 'Ana Sayfa', icon: Home },
+  { id: 'search', label: 'Ara', icon: Search },
   { id: 'favorites', label: 'Favoriler', icon: Heart },
   { id: 'history', label: 'Geçmiş', icon: Clock },
   { id: 'settings', label: 'Ayarlar', icon: Settings },

@@ -4,6 +4,7 @@ import { useCallback, useState } from 'react'
 import { ChefHat } from 'lucide-react'
 import { BottomNav, type Tab } from '@/components/bottom-nav'
 import { HomeScreen } from '@/components/screens/home-screen'
+import { SearchScreen } from '@/components/screens/search-screen'
 import { FavoritesScreen } from '@/components/screens/favorites-screen'
 import { HistoryScreen } from '@/components/screens/history-screen'
 import { SettingsScreen } from '@/components/screens/settings-screen'
@@ -47,6 +48,9 @@ export function AppShell() {
             onToggleFavorite={toggleFavorite}
             onAddHistory={handleAddHistory}
           />
+        )}
+        {tab === 'search' && (
+          <SearchScreen isFavorite={isFavorite} onToggleFavorite={toggleFavorite} />
         )}
         {tab === 'favorites' && (
           <FavoritesScreen

@@ -1,0 +1,51 @@
+# F-Droid metadata TASLAĞI
+#
+# Bu dosya BU depoya ait değil; F-Droid'in kendi veri deposuna gönderilecek:
+#   https://gitlab.com/fdroid/fdroiddata  →  metadata/com.yemekasistani.app.yml
+#
+# Buradaki kopya, gönderim sırasında ne yazılacağını kaybetmemek için duruyor.
+#
+# ⚠️ HENÜZ GÖNDERİLEMEZ: License alanı doldurulamıyor, çünkü depoda bir lisans
+# dosyası yok. F-Droid yalnızca özgür yazılım lisanslı uygulamaları kabul eder
+# ve lisansı seçme hakkı kodun sahibinindir (tospaemre). Lisans eklenmeden
+# gönderim reddedilir.
+
+Categories:
+  - Food & Drink
+
+License: TODO          # örn. GPL-3.0-only, Apache-2.0, MIT — depoya LICENSE eklendikten sonra
+AuthorName: tospaemre
+
+SourceCode: https://github.com/tospaemre/yemek-asistani
+IssueTracker: https://github.com/tospaemre/yemek-asistani/issues
+
+AutoName: Ne Pişirsem?
+
+RepoType: git
+Repo: https://github.com/tospaemre/yemek-asistani.git
+
+Builds:
+  - versionName: 1.1.0
+    versionCode: 6
+    commit: v1.1.0
+    subdir: android/app
+    gradle:
+      - yes
+    # node_modules F-Droid tarayıcısını takar; depoda zaten yok ama garanti olsun
+    scandelete:
+      - node_modules
+      - '@capacitor'
+
+# F-Droid derleme sunucusunda npm çalıştırmak kırılgan (MapComplete de bundan
+# vazgeçmiş). Onun yerine Capacitor'ın ürettiği dosyalar depoya commit'lenmeli
+# ki F-Droid sadece Gradle çalıştırsın. Şu an .gitignore bunları dışlıyor:
+#   android/app/src/main/assets/public/
+#   android/app/capacitor.build.gradle
+#   android/capacitor.settings.gradle
+#   android/capacitor-cordova-android-plugins/
+# Gönderimden önce bu dört yolun .gitignore'dan çıkarılıp commit'lenmesi gerekir.
+
+AutoUpdateMode: Version
+UpdateCheckMode: Tags
+CurrentVersion: 1.1.0
+CurrentVersionCode: 6

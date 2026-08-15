@@ -1,0 +1,29 @@
+Buzdolabını açıp "ne pişirsem" diye düşündüğün anlar için.
+
+Elindeki malzemeleri gir, uygulama sana o malzemelerle yapabileceğin tarifleri
+önersin. Her tarif için neyin elinde olduğunu, neyin eksik olduğunu ayrı ayrı
+gösterir — markete gitmen gerekiyorsa neyi alacağını bilirsin.
+
+ÖZELLİKLER
+
+* 5.000 Türkçe tarif — kahvaltı, öğle, akşam, ara öğün ve tatlı
+* Malzemeye göre öneri: elindekileri yaz, en uygun tarifler çıksın
+* Ada göre arama: "karnıyarık" yaz, 33 çeşidini gör
+* Her tarifte hazırlık ve pişirme süresi, kaç kişilik olduğu ve zorluk derecesi
+* Beğendiğin tarifleri favorilere ekle
+* Baktığın tarifler geçmişte saklanır
+* Karanlık mod
+
+TAMAMEN ÇEVRİMDIŞI
+
+Tariflerin hepsi uygulamanın içinde. İnternet bağlantısı gerekmez, hiçbir sunucuya
+istek gönderilmez, hiçbir veri toplanmaz. Reklam ve izleyici (tracker) yoktur.
+Favorilerin ve geçmişin yalnızca kendi telefonunda saklanır.
+
+Uygulama hiçbir izin istemez.
+
+TARİF VERİSİ
+
+Tarifler açık lisanslı bir veri setinden (turkish-recipes-175K, Apache-2.0)
+türetilmiştir. Kaynak, yapılan işlemler ve lisans ayrıntıları depodaki
+VERI-LISANS.md dosyasında yazılıdır.
