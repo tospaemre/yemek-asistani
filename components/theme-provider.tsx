@@ -15,16 +15,13 @@ const ThemeContext = createContext<ThemeContextValue | null>(null)
 const STORAGE_KEY = 'nps-theme'
 
 export function ThemeProvider({ children }: { children: React.ReactNode }) {
-  const [theme, setThemeState] = useState<Theme>('light')
-
-  // İlk yüklemede kayıtlı tercihi ya da sistem tercihini uygula
-  useEffect(() => {
-    const stored = localStorage.getItem(STORAGE_KEY) as Theme | null
-    const prefersDark =
-      window.matchMedia?.('(prefers-color-scheme: dark)').matches ?? false
-    const initial = stored ?? (prefersDark ? 'dark' : 'light')
-    setThemeState(initial)
-  }, [])
+  // Tema, layout'taki satır içi script tarafından ilk boyamadan ÖNCE
+  // <html> üzerine yazılıyor. Buradan senkron okuyoruz ki uygulama açılırken
+  // önce açık tema görünüp sonra karanlığa atlamasın.
+  const [theme, setThemeState] = useState<Theme>(() => {
+    if (typeof document === 'undefined') return 'light'
+    return document.documentElement.classList.contains('dark') ? 'dark' : 'light'
+  })
 
   useEffect(() => {
     const root = document.documentElement

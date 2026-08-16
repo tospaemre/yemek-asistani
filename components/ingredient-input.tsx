@@ -2,25 +2,19 @@
 
 import { useState } from 'react'
 import { Plus, X } from 'lucide-react'
+import { MEAL_SUGGESTIONS } from '@/lib/meal-suggestions'
+import type { MealId } from '@/lib/types'
 import { cn } from '@/lib/utils'
 
 interface IngredientInputProps {
   ingredients: string[]
   onChange: (next: string[]) => void
+  /** Hızlı ekle önerileri seçilen öğüne göre değişir. */
+  meal: MealId
 }
 
-const SUGGESTIONS = [
-  'Yumurta',
-  'Domates',
-  'Peynir',
-  'Patates',
-  'Soğan',
-  'Tavuk',
-  'Biber',
-  'Makarna',
-]
-
-export function IngredientInput({ ingredients, onChange }: IngredientInputProps) {
+export function IngredientInput({ ingredients, onChange, meal }: IngredientInputProps) {
+  const suggestions = MEAL_SUGGESTIONS[meal]
   const [value, setValue] = useState('')
 
   const addTokens = (raw: string) => {
@@ -92,7 +86,10 @@ export function IngredientInput({ ingredients, onChange }: IngredientInputProps)
             onChange={(e) => setValue(e.target.value)}
             onKeyDown={handleKeyDown}
             rows={ingredients.length ? 1 : 2}
-            placeholder={'Elindeki malzemeleri yaz...\nÖrn: yumurta, domates, peynir, patates'}
+            placeholder={`Elindeki malzemeleri yaz...\nÖrn: ${suggestions
+              .slice(0, 4)
+              .map((s) => s.toLocaleLowerCase('tr'))
+              .join(', ')}`}
             className="min-h-[44px] flex-1 resize-none bg-transparent px-2 py-2 text-base leading-relaxed outline-none placeholder:text-muted-foreground"
           />
           <button
@@ -118,7 +115,7 @@ export function IngredientInput({ ingredients, onChange }: IngredientInputProps)
           Hızlı ekle
         </p>
         <div className="flex flex-wrap gap-2">
-          {SUGGESTIONS.map((s) => {
+          {suggestions.map((s) => {
             const active = ingredients.some(
               (i) => i.toLocaleLowerCase('tr') === s.toLocaleLowerCase('tr'),
             )

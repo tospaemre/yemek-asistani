@@ -1,4 +1,3 @@
-import { Analytics } from '@vercel/analytics/next'
 import type { Metadata, Viewport } from 'next'
 import { Nunito, Baloo_2 } from 'next/font/google'
 import { ThemeProvider } from '@/components/theme-provider'
@@ -48,9 +47,17 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="tr" suppressHydrationWarning className="bg-background">
+      <head>
+        {/* Tema sınıfını ilk boyamadan önce uygula; yoksa uygulama açılırken
+            bir an açık tema görünüp karanlığa atlıyor (beyaz parlama). */}
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `(function(){try{var t=localStorage.getItem('nps-theme');if(!t){t=window.matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light'}if(t==='dark'){document.documentElement.classList.add('dark')}}catch(e){}})()`,
+          }}
+        />
+      </head>
       <body className={`${nunito.variable} ${baloo.variable} font-sans antialiased`}>
         <ThemeProvider>{children}</ThemeProvider>
-        {process.env.NODE_ENV === 'production' && <Analytics />}
       </body>
     </html>
   )

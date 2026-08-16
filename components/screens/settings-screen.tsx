@@ -1,6 +1,6 @@
 'use client'
 
-import { Moon, Sun, Trash2, Heart, Clock, Info } from 'lucide-react'
+import { Moon, Sun, Trash2, Heart, Clock } from 'lucide-react'
 import { useTheme } from '@/components/theme-provider'
 import { cn } from '@/lib/utils'
 
@@ -47,14 +47,16 @@ export function SettingsScreen({
             aria-label="Karanlık modu değiştir"
             onClick={toggleTheme}
             className={cn(
-              'relative h-7 w-12 rounded-full transition-colors',
-              isDark ? 'bg-primary' : 'bg-muted',
+              'relative h-7 w-12 shrink-0 rounded-full transition-colors',
+              isDark ? 'bg-primary' : 'bg-input',
             )}
           >
+            {/* left-1 şart: yoksa topuzun yatay çıpası tanımsız kalıyor ve
+                tarayıcı onu düğmenin ortasına yerleştiriyor */}
             <span
               className={cn(
-                'absolute top-1 h-5 w-5 rounded-full bg-card shadow transition-transform',
-                isDark ? 'translate-x-6' : 'translate-x-1',
+                'absolute left-1 top-1 h-5 w-5 rounded-full bg-white shadow-sm ring-1 ring-black/10 transition-transform',
+                isDark ? 'translate-x-5' : 'translate-x-0',
               )}
             />
           </button>
@@ -102,15 +104,6 @@ export function SettingsScreen({
             Sil
           </button>
         </div>
-      </section>
-
-      <section className="flex items-start gap-3 rounded-3xl border border-border bg-muted/50 p-4">
-        <Info className="mt-0.5 h-5 w-5 shrink-0 text-muted-foreground" />
-        <p className="text-sm text-muted-foreground">
-          Tarif önerileri şu an örnek (mock) yapay zeka servisiyle üretiliyor. Gerçek bir AI
-          servisine bağlanmak için <span className="font-semibold text-foreground">lib/ai-service.ts</span>{' '}
-          dosyasındaki servis katmanını kullanabilirsin.
-        </p>
       </section>
     </div>
   )

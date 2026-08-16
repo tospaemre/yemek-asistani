@@ -1,0 +1,8 @@
+* Tarif sayısı 5.000'e çıkarıldı (kahvaltı, öğle, akşam, ara öğün, tatlı)
+* Ada göre tarif arama eklendi
+* Öneri beğenilmezse diye alternatif sayısı 4'ten 8'e çıkarıldı
+* Aynı malzemelerle her aramada farklı tarifler geliyor
+* "Hızlı ekle" malzemeleri artık seçilen öğüne göre değişiyor
+* Ayarlardaki karanlık mod anahtarının bozuk görünümü düzeltildi
+* Uygulama açılırken oluşan beyaz parlama giderildi
+* Vercel Analytics kaldırıldı — uygulamada hiçbir izleyici kalmadı
